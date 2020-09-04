@@ -1,3 +1,17 @@
 h1 {
-    color: blue;
+    text-align: center;
+}
+
+table, td {
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+}
+
+td {
+    width: 20px;
+    height: 20px;
+}
+
+#result-sign {
+    margin-top: 20px;
 }
