@@ -8,7 +8,6 @@ label {
 
 table, td {
     border: 1px solid #cccccc;
-    border-collapse: collapse;
 }
 
 td {
@@ -18,4 +17,22 @@ td {
 
 #result-sign {
     margin-top: 20px;
+}
+
+.canvas-2 {
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.canvas-3 {
+    -moz-transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+    transform: scale(1, -1);
+}
+
+.canvas-4 {
+    -moz-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    transform: scale(-1, -1);
 }

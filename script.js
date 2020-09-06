@@ -1,17 +1,27 @@
 $(document).ready(function() {
-    //let gridSize = 18;
-    let grid = '';
-    for (let i = 1; i <= 9; i++) {
-        grid += '<tr>';
-        for (let j = 1; j <= 9; j++) {
-            let cellValue = (i * j) % 10;
-            grid += '<td class="value-' + cellValue + '"></td>';
-        }
-        grid += '</tr>';
+    function getGridSize() {
+        //let gridSize = 18;
     }
-    $('#result-sign').html(grid);
 
-    $('#calculate-btn').click(function() {
+    function createSmallGrid() {
+        let grid = '<table id="result-sign">';
+        for (let i = 1; i <= 9; i++) {
+            grid += '<tr>';
+            for (let j = 1; j <= 9; j++) {
+                let cellValue = (i * j) % 10;
+                grid += '<td class="value-' + cellValue + '">'+cellValue+'</td>';
+            }
+            grid += '</tr>';
+        }
+        grid += '</table>';
+        $('#result-sign-wrap').html(grid);
+    }
+
+    function createMediumGrid() {
+        createSmallGrid();
+    }
+
+    function color() {
         // Clear grid
         $('td').css('background-color', 'white');
 
@@ -29,11 +39,44 @@ $(document).ready(function() {
             return index === numbers.indexOf(value);
         });
 
-        uniqueNumbers.sort();
-
         // Color grid's cells
         $.each(uniqueNumbers, function(index, value) {
             $('.value-' + value).css('background-color', 'red');
         });
+    }
+
+    function makeImage() {
+        var table = $('#result-sign')[0];
+        var element = $('#result-sign-wrap')[0];
+        var getCanvas;
+
+        for (let i = 0; i < 4; i++) {
+            html2canvas(table).then(function(canvas) {
+                element.append(canvas);
+                let nthCanvas = i + 1;
+                $('canvas').eq(i).addClass('canvas-' + nthCanvas);
+            });
+        }
+
+        $('table').remove();
+    }
+
+    function makeAllImage() {
+
+    }
+
+    $('#calculate-btn').click(function() {
+        createMediumGrid();
+        //color();
+        makeImage();
+        makeAllImage();
     });
+
+    function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
 });
